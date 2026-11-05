@@ -1,0 +1,477 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><title>Groupe Cléroux Déneigement</title><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><style>:root{padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style></head><body><title>Groupe Cléroux Déneigement</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Groupe Cléroux : déneigement résidentiel et commercial, transport et matériaux en vrac, aménagement paysager. Laval, Montréal et Rive-Nord.">
+<script>try{if(sessionStorage.getItem("cl-veil"))document.documentElement.classList.add("veil-in")}catch(e){}document.documentElement.classList.add("js")</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400;1,6..96,500&family=Hanken+Grotesk:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+/* ---------- Écran de chargement ---------- */
+.loader{position:fixed;inset:0;z-index:95;display:grid;place-items:center;pointer-events:all}
+.loader__half{position:absolute;left:0;right:0;height:50.5%;background:var(--snow)}
+.loader__half--t{top:0}.loader__half--b{bottom:0}
+.loader canvas{position:absolute;inset:0;width:100%;height:100%}
+.loader__mark{position:relative;width:min(760px,88vw)}
+.loader__mark svg{width:100%;height:auto;overflow:visible}
+.loader__mark text{font-family:var(--f-display);font-size:120px;font-weight:400;fill:transparent;stroke:var(--ink);stroke-width:1;stroke-dasharray:1400;stroke-dashoffset:1400;animation:draw 2.6s var(--ease) forwards, fillIn 1s 1.9s forwards}
+.loader__mark text tspan{font-style:italic}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes fillIn{to{fill:var(--ink);stroke-width:0}}
+.loader__meta{position:absolute;left:var(--gutter-l);right:var(--gutter-r);bottom:calc(28px + env(safe-area-inset-bottom,0px));display:flex;justify-content:space-between;align-items:end;gap:16px}
+.loader__pct{font-family:var(--f-mono);font-size:clamp(2.4rem,6vw,4.6rem);line-height:.9;font-variant-numeric:tabular-nums;color:var(--ink)}
+.loader__bar{position:absolute;left:0;bottom:0;height:2px;background:var(--glacier);width:0}
+html:not(.js) .loader{display:none}
+
+/* ---------- Le récit 3D ---------- */
+.story{position:relative;height:640vh;background:var(--snow)}
+.story__stage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;color:var(--story-fg,var(--ink));transition:color .9s var(--ease)}
+.story__stage canvas,.story__stage video,.story__stage .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.story__stage .poster{background:var(--frost)}
+.story__shade{position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,color-mix(in srgb,var(--snow) 74%,transparent) 0%,transparent 50%);transition:opacity 1s var(--ease)}
+.story__shade--night{background:linear-gradient(90deg,color-mix(in srgb,var(--ink) 52%,transparent) 0%,transparent 55%);opacity:0}
+.story--night .story__shade{opacity:0}.story--night .story__shade--night{opacity:1}
+.step{position:absolute;left:0;right:0;top:0;bottom:0;display:flex;flex-direction:column;justify-content:center;padding-left:var(--gutter-l);padding-right:var(--gutter-r);padding-block:96px 70px;pointer-events:none;opacity:0;visibility:hidden}
+.step.is-on{visibility:visible}
+.step .inner{max-width:var(--wrap);width:100%;margin-inline:auto;pointer-events:auto}
+.step .label{color:inherit;opacity:.72;display:block;margin-bottom:22px}
+.step h2{font-size:clamp(2.4rem,5.6vw,5.4rem);max-width:12ch;text-shadow:0 2px 34px color-mix(in srgb,var(--story-glow,var(--snow)) 70%,transparent)}
+.step p,.step blockquote{text-shadow:0 1px 18px color-mix(in srgb,var(--story-glow,var(--snow)) 80%,transparent)}
+.step p{margin-top:24px;font-size:clamp(1.02rem,1.3vw,1.2rem);max-width:40ch;opacity:.86}
+.step--hero{opacity:1;visibility:visible}
+.step--hero h1{font-size:var(--t-hero);max-width:9.5ch;line-height:.92;letter-spacing:-.025em}
+.step--hero h1 em{color:var(--glacier)}
+.step--hero p{max-width:46ch;color:var(--slate);opacity:1}
+.hero-actions{display:flex;flex-wrap:wrap;align-items:center;gap:14px 26px;margin-top:40px}
+.hero-phone{font-family:var(--f-mono);font-size:.95rem;text-decoration:none;display:inline-flex;gap:10px;align-items:center}
+.hero-phone small{font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--slate)}
+.step--end{align-items:stretch;justify-content:flex-end;padding-bottom:clamp(90px,14vh,150px)}
+.step--end h2{font-size:clamp(3.2rem,9vw,9rem);max-width:none}
+.step--end blockquote{margin:22px 0 0;font-family:var(--f-display);font-style:italic;font-size:clamp(1.15rem,1.7vw,1.5rem);max-width:34ch}
+.step--end cite{display:block;margin-top:10px;font-style:normal;font-family:var(--f-mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;opacity:.7}
+
+.hud{position:absolute;left:var(--gutter-l);right:var(--gutter-r);bottom:calc(22px + env(safe-area-inset-bottom,0px));display:flex;flex-wrap:wrap;gap:10px 28px;align-items:center;font-family:var(--f-mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;pointer-events:none;opacity:.85}
+.hud span{display:inline-flex;align-items:center;gap:10px;white-space:nowrap}
+.hud b{font-weight:500;font-variant-numeric:tabular-nums;min-width:3.2em}
+.hud .meter{width:64px;height:3px;background:color-mix(in srgb,currentColor 22%,transparent);position:relative;overflow:hidden;border-radius:2px}
+.hud .meter i{position:absolute;inset:0;background:currentColor;transform-origin:left;transform:scaleX(0)}
+.hud .tag{margin-left:auto}
+.scroll-cue{position:absolute;right:var(--gutter-r);top:50%;writing-mode:vertical-rl;font-family:var(--f-mono);font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;display:flex;align-items:center;gap:14px;color:var(--slate)}
+.scroll-cue::after{content:"";width:1px;height:70px;background:linear-gradient(var(--slate),transparent);animation:cue 2.4s var(--ease) infinite}
+@keyframes cue{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* ---------- Chiffres ---------- */
+.figures{background:var(--paper);position:relative;z-index:2}
+.figures__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--frost)}
+.fig{padding:44px 28px 10px 0;border-right:1px solid var(--frost);min-width:0}
+.fig + .fig{padding-left:28px}
+.fig:last-child{border-right:0}
+.fig .num{font-family:var(--f-display);font-size:clamp(4.4rem,10vw,9.5rem);line-height:.85;letter-spacing:-.03em;display:flex;align-items:flex-start;font-variant-numeric:lining-nums tabular-nums}
+.fig .num sup{font-size:.38em;margin-left:.06em;line-height:1;color:var(--glacier);font-style:italic}
+.fig h3{font-family:var(--f-body);font-weight:600;font-size:1.02rem;letter-spacing:0;margin-top:22px}
+.fig p{color:var(--slate);font-size:.95rem;margin-top:6px}
+
+/* ---------- Services en défilement horizontal ---------- */
+.services{background:var(--snow);position:relative;z-index:2;overflow:hidden}
+.services__pin{height:100vh;height:100svh;display:flex;flex-direction:column;justify-content:center;gap:clamp(24px,4vh,44px);padding-block:clamp(70px,10vh,110px) 40px}
+.services__top{display:flex;justify-content:space-between;align-items:end;gap:24px}
+.services__top h2{font-size:var(--t-h2);max-width:14ch}
+.services__progress{font-family:var(--f-mono);font-size:.75rem;letter-spacing:.12em;display:flex;align-items:center;gap:14px;color:var(--slate);flex:none}
+.services__progress .bar{width:120px;height:2px;background:var(--frost);position:relative}
+.services__progress .bar i{position:absolute;inset:0;background:var(--ink);transform-origin:left;transform:scaleX(.2)}
+.track{display:flex;gap:clamp(16px,2vw,28px);padding-left:max(var(--gutter-l), calc((100vw - var(--wrap)) / 2 + 16px));padding-right:var(--gutter-r);width:max-content;will-change:transform}
+.panel{position:relative;width:min(78vw,560px);height:min(62vh,600px);min-height:420px;flex:none;border-radius:6px;overflow:hidden;background:var(--paper);border:1px solid var(--frost);display:flex;flex-direction:column;text-decoration:none;color:var(--ink);transition:border-color .5s var(--ease)}
+.panel:hover{border-color:color-mix(in srgb,var(--glacier) 45%,transparent)}
+.panel__media{position:relative;flex:1 1 auto;min-height:0;overflow:hidden;background:var(--frost)}
+.panel__media img{width:100%;height:100%;object-fit:cover;transform:scale(1.06);transition:transform 1.6s var(--ease)}
+.panel:hover .panel__media img{transform:scale(1.14)}
+.panel__body{padding:26px 28px 28px;display:grid;gap:10px}
+.panel__body .row{display:flex;justify-content:space-between;align-items:center;gap:16px}
+.panel h3{font-size:clamp(1.8rem,2.6vw,2.4rem)}
+.panel p{color:var(--slate);font-size:.95rem}
+.panel .arrow{width:46px;height:46px;border-radius:50%;border:1px solid var(--frost);display:grid;place-items:center;flex:none;transition:background .5s var(--ease),border-color .5s,transform .6s var(--ease)}
+.panel:hover .arrow{background:var(--ink);border-color:var(--ink);color:var(--paper);transform:rotate(-45deg)}
+.season{font-family:var(--f-mono);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;padding:6px 10px;border-radius:999px;background:var(--glacier-soft);color:var(--ink);width:max-content}
+/* visuels typographiques des panneaux sans photo */
+.tons{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;gap:4px;padding:28px;background:var(--ink);color:var(--paper)}
+.tons div{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid color-mix(in srgb,var(--paper) 14%,transparent);padding-block:12px}
+.tons b{font-family:var(--f-display);font-weight:400;font-size:clamp(2rem,3.4vw,3rem);line-height:1}
+.tons span{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;opacity:.7}
+.swatches{position:absolute;inset:0;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--frost)}
+.swatches div{position:relative;display:flex;align-items:flex-end;padding:12px;font-family:var(--f-mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--paper);text-shadow:0 1px 6px rgba(0,0,0,.4)}
+.sw-top{background:radial-gradient(circle at 30% 30%,#7a5b43,#4a3423 70%)}
+.sw-mix{background:radial-gradient(circle at 60% 40%,#8a6a4c,#5b4330 70%)}
+.sw-mulch{background:repeating-linear-gradient(28deg,#5a3a24 0 3px,#6d4a2f 3px 6px,#3f2919 6px 8px)}
+.sw-stone{background:radial-gradient(circle at 20% 30%,#a3a9ad 0 6%,transparent 7%),radial-gradient(circle at 70% 60%,#8b9297 0 8%,transparent 9%),radial-gradient(circle at 45% 80%,#b8bdc0 0 5%,transparent 6%),#7c8388}
+.sw-river{background:radial-gradient(ellipse at 30% 40%,#c9c2b4 0 12%,transparent 13%),radial-gradient(ellipse at 70% 70%,#a99f8f 0 14%,transparent 15%),radial-gradient(ellipse at 75% 25%,#d8d2c6 0 10%,transparent 11%),#8e8677}
+.sw-slate{background:linear-gradient(135deg,#2a2f35,#3c434b 50%,#23282d)}
+.garden{position:absolute;inset:0;padding:28px;display:flex;flex-direction:column;justify-content:flex-end;background:linear-gradient(180deg,#e9efe9 0%,#d8e3d8 100%)}
+.garden ul{list-style:none;margin:0;padding:0;columns:2;column-gap:24px}
+.garden li{font-family:var(--f-display);font-size:clamp(1.2rem,1.8vw,1.55rem);line-height:1.6;break-inside:avoid}
+.garden .label{margin-bottom:12px;color:#3d5a45}
+.jobs{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:32px;background:var(--glacier);color:var(--paper)}
+.jobs b{font-family:var(--f-display);font-weight:400;font-size:clamp(2.6rem,4.6vw,4.4rem);line-height:.95}
+.jobs span{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;opacity:.8;margin-top:18px}
+
+/* ---------- Flotte (photos) ---------- */
+.fleet{background:var(--paper);position:relative;z-index:2}
+.fleet__grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:clamp(12px,1.6vw,22px)}
+.fleet__grid .photo:nth-child(1){grid-column:1 / span 8;aspect-ratio:16/9}
+.fleet__grid .photo:nth-child(2){grid-column:9 / span 4;aspect-ratio:4/5;align-self:end}
+.fleet__grid .photo:nth-child(3){grid-column:3 / span 5;aspect-ratio:4/3;margin-top:-8%}
+.fleet__note{grid-column:8 / span 5;align-self:center;display:grid;gap:18px;padding-top:24px}
+.fleet__note p{color:var(--slate)}
+.fleet__note ul{list-style:none;padding:0;margin:0;display:grid;gap:0;border-top:1px solid var(--frost)}
+.fleet__note li{display:flex;justify-content:space-between;gap:16px;padding-block:13px;border-bottom:1px solid var(--frost);font-size:.95rem}
+.fleet__note li span{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.1em;color:var(--slate);text-transform:uppercase}
+
+/* ---------- Secteurs ---------- */
+.zones{background:var(--snow);position:relative;z-index:2}
+.zones__list{border-top:1px solid var(--frost)}
+.zone{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr) auto;gap:24px;align-items:center;padding-block:clamp(22px,3vw,36px);border-bottom:1px solid var(--frost);position:relative;overflow:hidden}
+.zone::before{content:"";position:absolute;inset:0;background:var(--glacier-soft);transform:scaleY(0);transform-origin:bottom;transition:transform .7s var(--ease);z-index:-1}
+.zone:hover::before{transform:scaleY(1)}
+.zone{isolation:isolate}
+.zone h3{font-size:clamp(2.4rem,6vw,5.6rem);line-height:.95}
+.zone p{color:var(--slate);max-width:38ch}
+.zone .coord{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.12em;color:var(--slate);text-align:right;white-space:nowrap}
+.zone .pulse{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--glacier);margin-right:10px;vertical-align:middle;box-shadow:0 0 0 0 color-mix(in srgb,var(--glacier) 50%,transparent);animation:zonePulse 2.6s infinite}
+.zone:nth-child(2) .pulse{animation-delay:.8s}.zone:nth-child(3) .pulse{animation-delay:1.6s}
+@keyframes zonePulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--glacier) 50%,transparent)}70%{box-shadow:0 0 0 14px transparent}100%{box-shadow:0 0 0 0 transparent}}
+.zones__foot{margin-top:28px;color:var(--slate)}
+
+/* ---------- Avis ---------- */
+.reviews{background:var(--paper);position:relative;z-index:2}
+.score{display:flex;align-items:baseline;gap:18px;flex-wrap:wrap}
+.score b{font-family:var(--f-display);font-weight:400;font-size:clamp(4rem,8vw,7rem);line-height:.9}
+.stars{color:var(--glacier);letter-spacing:.12em;font-size:1.3rem}
+.reviews__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,2vw,26px)}
+.review{position:relative;background:var(--snow);border:1px solid var(--frost);border-radius:6px;padding:34px 30px 30px;display:flex;flex-direction:column;gap:26px;min-width:0;transform-style:preserve-3d;will-change:transform}
+.review .glare{position:absolute;inset:0;border-radius:inherit;pointer-events:none;mix-blend-mode:soft-light}
+.review blockquote{margin:0;font-family:var(--f-display);font-size:clamp(1.25rem,1.7vw,1.55rem);line-height:1.3;transform:translateZ(30px)}
+.review footer{margin-top:auto;display:flex;justify-content:space-between;align-items:center;gap:16px;transform:translateZ(18px)}
+.review footer b{font-weight:600;font-size:.95rem}
+.review footer span{font-family:var(--f-mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--slate)}
+.review:nth-child(2){margin-top:48px}
+
+/* ---------- FAQ ---------- */
+.faq-section{background:var(--snow);position:relative;z-index:2}
+.faq-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:clamp(30px,6vw,90px)}
+.faq-grid h2{font-size:var(--t-h2)}
+
+@media (max-width:980px){
+  .figures__grid{grid-template-columns:1fr}
+  .fig{border-right:0;border-bottom:1px solid var(--frost);padding:34px 0 30px}
+  .fig + .fig{padding-left:0}
+  .fleet__grid .photo:nth-child(1){grid-column:1 / -1}
+  .fleet__grid .photo:nth-child(2){grid-column:1 / span 6;aspect-ratio:4/5}
+  .fleet__grid .photo:nth-child(3){grid-column:7 / span 6;margin-top:0;align-self:end}
+  .fleet__note{grid-column:1 / -1}
+  .zone{grid-template-columns:1fr;gap:10px}
+  .zone .coord{text-align:left}
+  .reviews__grid{grid-template-columns:1fr}
+  .review:nth-child(2){margin-top:0}
+  .faq-grid{grid-template-columns:1fr}
+  .story__shade{background:linear-gradient(180deg,color-mix(in srgb,var(--snow) 78%,transparent) 0%,transparent 62%)}
+  .step{justify-content:flex-start;padding-top:calc(110px + env(safe-area-inset-top,0px))}
+  .step--end{justify-content:flex-end}
+  .scroll-cue{display:none}
+  .hud .tag{display:none}
+}
+@media (max-width:560px){
+  .services__top{flex-direction:column;align-items:flex-start}
+  .panel{width:84vw;min-height:440px}
+  .hud{font-size:.6rem;gap:8px 16px}
+  .hud .meter{width:40px}
+}
+</style>
+
+<!-- Écran de chargement -->
+<div class="loader" aria-hidden="true">
+  <div class="loader__half loader__half--t"></div>
+  <div class="loader__half loader__half--b"></div>
+  <canvas></canvas>
+  <div class="loader__mark">
+    <svg viewBox="0 0 940 160" role="img" aria-label="Groupe Cléroux"><text x="50%" y="118" text-anchor="middle">Groupe <tspan>Cléroux</tspan></text></svg>
+  </div>
+  <div class="loader__meta">
+    <span class="label">Maquette de Laval · préparation</span>
+    <span class="loader__pct"><span data-pct>000</span> %</span>
+  </div>
+  <div class="loader__bar"></div>
+</div>
+
+<header class="site-head">
+  <a class="brand" href="index.html" data-veil="Accueil" aria-label="Groupe Cléroux, accueil"><b>Groupe Cléroux</b><small>Déneigement · Vrac · Paysager</small></a>
+  <nav class="nav" aria-label="Navigation principale">
+    <a href="deneigement.html" data-veil="Déneigement">Déneigement</a>
+    <a href="vrac.html" data-veil="Vrac">Vrac</a>
+    <a href="paysager.html" data-veil="Paysager">Paysager</a>
+    <a href="carrieres.html" data-veil="Carrières">Carrières</a>
+  </nav>
+  <div class="head-tools">
+    <button class="btn-sound" type="button" data-sound aria-pressed="false" aria-label="Activer le son d'ambiance" title="Son d'ambiance">
+      <svg viewBox="0 0 18 18" aria-hidden="true"><g class="bars" fill="currentColor"><rect x="2" y="4" width="2.4" height="11" rx="1.2"/><rect x="7.8" y="2" width="2.4" height="13" rx="1.2"/><rect x="13.6" y="6" width="2.4" height="9" rx="1.2"/></g></svg>
+    </button>
+    <a class="btn btn--small" href="soumission.html" data-veil="Soumission" data-magnetic=".3"><span class="dot"></span>Obtenir ma soumission</a>
+    <button class="menu-btn" type="button" data-menu-open aria-expanded="false" aria-label="Ouvrir le menu"><span></span></button>
+  </div>
+</header>
+
+<nav class="mobile-nav" aria-label="Menu">
+  <button class="mobile-nav__close" type="button" data-menu-close aria-label="Fermer le menu">×</button>
+  <a href="index.html" data-veil="Accueil">Accueil</a>
+  <a href="deneigement.html" data-veil="Déneigement">Déneigement</a>
+  <a href="vrac.html" data-veil="Vrac">Transport et vrac</a>
+  <a href="paysager.html" data-veil="Paysager">Paysager</a>
+  <a href="carrieres.html" data-veil="Carrières">Carrières</a>
+  <a href="soumission.html" data-veil="Soumission">Soumission</a>
+  <span class="label">438 826-2471 · reception@groupecleroux.com</span>
+</nav>
+
+<main>
+  <!-- Le récit : la tempête puis le dégagement de Laval -->
+  <section class="story" id="story" aria-label="Laval, de la tempête au dégagement">
+    <div class="story__stage">
+      <canvas id="laval" aria-hidden="true"></canvas>
+      <div class="story__shade"></div><div class="story__shade story__shade--night"></div>
+
+      <div class="step step--hero" data-range="0,0.1">
+        <div class="inner">
+          <span class="label">Laval · Montréal · Rive-Nord</span>
+          <h1 data-split="load">Laval dégagée, <em>depuis 40&nbsp;ans.</em></h1>
+          <p class="hero-lead">Déneigement résidentiel et commercial, transport et matériaux en vrac, aménagement paysager. Une entreprise familiale, été comme hiver.</p>
+          <div class="hero-actions">
+            <a class="btn" href="soumission.html" data-veil="Soumission" data-magnetic><span class="dot"></span>Obtenir ma soumission</a>
+            <button class="hero-phone copy" type="button" data-copy="438 826-2471" data-cursor="Copier"><small>Bureau</small><span>438 826-2471</span><small>Copier</small></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="step" data-range="0.12,0.31">
+        <div class="inner"><span class="label">Acte 1 · La bordée</span>
+          <h2>La neige tombe. La ville disparaît.</h2>
+          <p>Rues, entrées, stationnements : en quelques heures, tout est recouvert.</p></div>
+      </div>
+      <div class="step" data-range="0.35,0.49">
+        <div class="inner"><span class="label">Acte 2 · La flotte</span>
+          <h2>Nos deux sites s'allument.</h2>
+          <p>Chargeurs et camions partent en même temps, prêts à travailler sur plusieurs sites pendant les grosses tempêtes.</p></div>
+      </div>
+      <div class="step" data-range="0.52,0.65">
+        <div class="inner"><span class="label">Acte 3 · Rue par rue</span>
+          <h2>Chaque entrée, une à une.</h2>
+          <p>Les bancs de neige se forment le long des rues. Les entrées se dégagent au passage de l'équipe.</p></div>
+      </div>
+      <div class="step" data-range="0.67,0.79">
+        <div class="inner"><span class="label">Acte 4 · Les sites commerciaux</span>
+          <h2>Stationnements, quais, trottoirs.</h2>
+          <p>Chaque site suit son propre plan de service : déneigement, soufflage, épandage d'abrasifs et transport de la neige au besoin.</p></div>
+      </div>
+      <div class="step step--end" data-range="0.86,1.01">
+        <div class="inner"><span class="label">Le matin suivant</span>
+          <h2>Laval dégagée.</h2>
+          <blockquote>« Le travail est toujours bien fait, même après de grosses tempêtes. »<cite>Emmanuelle M. · avis Google</cite></blockquote>
+        </div>
+      </div>
+
+      <div class="hud" aria-hidden="true">
+        <span>Chute de neige <span class="meter"><i data-hud="snow"></i></span></span>
+        <span>Rues <b data-hud="streets">0 %</b></span>
+        <span>Entrées <b data-hud="drives">0/0</b></span>
+        <span>Stationnements <b data-hud="lots">0 %</b></span>
+        <span class="tag">Maquette illustrative · Laval (QC)</span>
+      </div>
+      <div class="scroll-cue" aria-hidden="true">Défilez pour lancer la tempête</div>
+    </div>
+  </section>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track">
+      <span>Déneigement résidentiel et commercial</span><span>Laval</span><span>Transport en vrac</span><span>Montréal</span><span>Matériaux en vrac</span><span>Rive-Nord</span><span>Aménagement paysager</span><span>Entreprise familiale</span>
+      <span>Déneigement résidentiel et commercial</span><span>Laval</span><span>Transport en vrac</span><span>Montréal</span><span>Matériaux en vrac</span><span>Rive-Nord</span><span>Aménagement paysager</span><span>Entreprise familiale</span>
+    </div>
+  </div>
+
+  <!-- Chiffres clés -->
+  <section class="section figures" aria-labelledby="fig-title">
+    <div class="wrap">
+      <div class="section-head">
+        <div><span class="label">Groupe Cléroux en chiffres</span>
+          <h2 id="fig-title" data-split="scroll" data-scatter>Une entreprise familiale, bien établie.</h2></div>
+        <p class="lead" data-fade>Groupe Cléroux réunit le déneigement, le transport et les matériaux en vrac sous un même toit, avec un seul interlocuteur pour vos projets.</p>
+      </div>
+      <div class="figures__grid">
+        <div class="fig"><div class="num"><span data-count="40">40</span><sup>+</sup></div><h3>ans d'expérience</h3><p>Une connaissance fine des hivers de Laval, de Montréal et de la Rive-Nord.</p></div>
+        <div class="fig"><div class="num"><span data-count="60">60</span><sup>+</sup></div><h3>camions et équipements</h3><p>Des chargeurs et des camions adaptés aux petits comme aux grands sites.</p></div>
+        <div class="fig"><div class="num"><span data-count="4.7" data-decimals="1">4,7</span><sup>★</sup></div><h3>sur Google</h3><p>Note moyenne sur 18 avis pour le service de déneigement.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services : défilement horizontal -->
+  <section class="services" id="services" aria-labelledby="srv-title">
+    <div class="services__pin">
+      <div class="wrap services__top">
+        <div><span class="label">Nos services</span><h2 id="srv-title">Été comme hiver, un seul groupe.</h2></div>
+        <div class="services__progress" aria-hidden="true"><span data-srv-count>1 / 5</span><span class="bar"><i></i></span></div>
+      </div>
+      <div class="track">
+        <a class="panel" href="deneigement.html" data-veil="Déneigement">
+          <div class="panel__media"><img src="assets/img/camion-tempete.webp" alt="Camion de déneigement avec lame dans une tempête de neige" loading="lazy"></div>
+          <div class="panel__body"><span class="season">Hiver</span>
+            <div class="row"><h3>Déneigement</h3><span class="arrow" aria-hidden="true">→</span></div>
+            <p>Entrées résidentielles, stationnements, trottoirs, quais de chargement et sites industriels.</p></div>
+        </a>
+        <a class="panel" href="vrac.html" data-veil="Transport en vrac">
+          <div class="panel__media"><div class="tons" aria-hidden="true"><div><b>10 roues</b><span>jusqu'à 15 t</span></div><div><b>12 roues</b><span>jusqu'à 20 t</span></div><div><b>Semi-remorque</b><span>Grands volumes</span></div></div></div>
+          <div class="panel__body"><span class="season">Chantiers</span>
+            <div class="row"><h3>Transport en vrac</h3><span class="arrow" aria-hidden="true">→</span></div>
+            <p>Livraison directe sur le chantier, pour les projets résidentiels, commerciaux et industriels.</p></div>
+        </a>
+        <a class="panel" href="vrac.html#materiaux" data-veil="Matériaux en vrac">
+          <div class="panel__media"><div class="swatches" aria-hidden="true"><div class="sw-top">Top soil</div><div class="sw-mix">Terre mixte</div><div class="sw-mulch">Paillis</div><div class="sw-stone">Pierre 3/4 net</div><div class="sw-river">Pierre de rivière</div><div class="sw-slate">Ardoise noire</div></div></div>
+          <div class="panel__body"><span class="season">Inventaire</span>
+            <div class="row"><h3>Matériaux en vrac</h3><span class="arrow" aria-hidden="true">→</span></div>
+            <p>Terres, couvre-sols, pierre concassée, recyclée et décorative.</p></div>
+        </a>
+        <a class="panel" href="paysager.html" data-veil="Paysager">
+          <div class="panel__media"><div class="garden"><span class="label">Entretien · Aménagement</span><ul><li>Tonte</li><li>Taille de haies</li><li>Plates-bandes</li><li>Plantation</li><li>Pose de tourbe</li><li>Pavé uni</li></ul></div></div>
+          <div class="panel__body"><span class="season">Été</span>
+            <div class="row"><h3>Aménagement paysager</h3><span class="arrow" aria-hidden="true">→</span></div>
+            <p>Forfaits saisonniers d'entretien et projets d'aménagement complets.</p></div>
+        </a>
+        <a class="panel" href="carrieres.html" data-veil="Carrières">
+          <div class="panel__media"><div class="jobs"><b>On embauche, été comme hiver.</b><span>Opérateurs · Journaliers · Chefs d'équipe</span></div></div>
+          <div class="panel__body"><span class="season">Carrières</span>
+            <div class="row"><h3>Joindre l'équipe</h3><span class="arrow" aria-hidden="true">→</span></div>
+            <p>Postes saisonniers et à l'année, à temps plein ou partiel.</p></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- La flotte -->
+  <section class="section fleet" aria-labelledby="fleet-title">
+    <div class="wrap">
+      <div class="section-head">
+        <div><span class="label">Capacité et équipements</span>
+          <h2 id="fleet-title" data-split="scroll" data-scatter>Une flotte prête pour la prochaine bordée.</h2></div>
+        <p class="lead" data-fade>Des chargeurs et des camions qui peuvent travailler sur plusieurs sites en même temps, disponibles toute la saison.</p>
+      </div>
+      <div class="fleet__grid">
+        <figure class="photo"><img src="assets/img/flotte-nuit.webp" alt="Camions de déneigement stationnés dans une cour la nuit, gyrophares allumés" loading="lazy"><figcaption>La cour, avant la sortie de nuit</figcaption></figure>
+        <figure class="photo"><img src="assets/img/souffleuse-trottoir.webp" alt="Opérateur qui souffle la neige d'un accès piétonnier devant un bâtiment" loading="lazy"><figcaption>Accès piétonniers</figcaption></figure>
+        <figure class="photo"><img src="assets/img/chargeur-rue.webp" alt="Chargeur jaune avec grande lame dans une rue enneigée" loading="lazy"><figcaption>Chargeur avec lame</figcaption></figure>
+        <div class="fleet__note">
+          <p>Notre équipe planifie chaque intervention et respecte les horaires, même lors des conditions hivernales les plus difficiles.</p>
+          <ul>
+            <li>Stationnements <span>Grandes surfaces</span></li>
+            <li>Trottoirs et escaliers <span>Accès sécuritaires</span></li>
+            <li>Abrasifs et fondants <span>Adhérence</span></li>
+            <li>Transport de la neige <span>Sur ou hors site</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Secteurs -->
+  <section class="section zones" aria-labelledby="zones-title">
+    <div class="wrap">
+      <div class="section-head">
+        <div><span class="label">Secteurs desservis</span>
+          <h2 id="zones-title" data-split="scroll">Trois territoires, une seule équipe.</h2></div>
+        <p class="lead" data-fade>Notre base est à Laval, au 1570, rue Principale. De là, nos équipes desservent l'île et les deux rives.</p>
+      </div>
+      <div class="zones__list">
+        <div class="zone"><h3><span class="pulse" aria-hidden="true"></span>Laval</h3><p>Notre base, au cœur du territoire. Résidentiel, commercial et industriel.</p><span class="coord">45°34′ N · 73°41′ O</span></div>
+        <div class="zone"><h3><span class="pulse" aria-hidden="true"></span>Montréal</h3><p>Au sud de la rivière des Prairies.</p><span class="coord">Rive sud de Laval</span></div>
+        <div class="zone"><h3><span class="pulse" aria-hidden="true"></span>Rive-Nord</h3><p>Au nord de la rivière des Mille Îles.</p><span class="coord">Rive nord de Laval</span></div>
+      </div>
+      <p class="zones__foot">Un secteur avoisinant ou une demande particulière ? Appelez-nous au 438 826-2471.</p>
+    </div>
+  </section>
+
+  <!-- Avis -->
+  <section class="section reviews" aria-labelledby="rev-title">
+    <div class="wrap">
+      <div class="section-head">
+        <div><span class="label">Avis Google · Déneigement</span>
+          <h2 id="rev-title" data-split="scroll" data-scatter>Ce que disent nos clients.</h2></div>
+        <div class="score" data-fade><b>4,7</b><div><div class="stars" aria-label="4,7 étoiles sur 5">★★★★★</div><span class="label">Moyenne sur 18 avis</span></div></div>
+      </div>
+      <div class="reviews__grid">
+        <article class="review" data-tilt><span class="glare"></span>
+          <blockquote>« Service impeccable. Équipe professionnelle, ponctuelle et très efficace. Le travail est toujours bien fait, même après de grosses tempêtes. »</blockquote>
+          <footer><b>Emmanuelle Marchant</b><span>Avis Google</span></footer></article>
+        <article class="review" data-tilt><span class="glare"></span>
+          <blockquote>« Personnel de confiance, service rapide. Les meilleurs à Laval. »</blockquote>
+          <footer><b>Hassan</b><span>Avis Google</span></footer></article>
+        <article class="review" data-tilt><span class="glare"></span>
+          <blockquote>« Très bon service et très professionnel ! Je les recommande énormément. »</blockquote>
+          <footer><b>Michael Allard</b><span>Avis Google</span></footer></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section faq-section" aria-labelledby="faq-title">
+    <div class="wrap faq-grid">
+      <div><span class="label">Questions fréquentes</span><h2 id="faq-title" data-split="scroll">Avant de nous appeler.</h2></div>
+      <div class="faq">
+        <details><summary>Faites-vous le déneigement résidentiel ?<i aria-hidden="true"></i></summary><div class="faq__body"><p>Oui. Groupe Cléroux déneige les entrées résidentielles, les copropriétés et les multilogements, ainsi que les sites commerciaux, industriels et institutionnels.</p></div></details>
+        <details><summary>Quels secteurs desservez-vous ?<i aria-hidden="true"></i></summary><div class="faq__body"><p>Laval, Montréal, la Rive-Nord et les secteurs avoisinants. Pour un secteur particulier, appelez-nous au 438 826-2471.</p></div></details>
+        <details><summary>Que se passe-t-il pendant une grosse tempête ?<i aria-hidden="true"></i></summary><div class="faq__body"><p>Notre flotte de chargeurs et de camions peut travailler sur plusieurs sites en même temps. L'équipe reste disponible toute la saison, même dans les conditions les plus difficiles.</p></div></details>
+        <details><summary>Livrez-vous des matériaux en vrac à domicile ?<i aria-hidden="true"></i></summary><div class="faq__body"><p>Oui. Terre, pierre, sable, paillis et autres matériaux sont livrés directement sur votre chantier ou à domicile.</p></div></details>
+        <details><summary>Comment obtenir un prix ?<i aria-hidden="true"></i></summary><div class="faq__body"><p>Chaque propriété est différente : le prix est établi sur soumission. Remplissez le formulaire en ligne ou appelez-nous, l'équipe vous revient rapidement.</p></div></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Appel à l'action final -->
+  <section class="final" aria-labelledby="final-title">
+    <canvas aria-hidden="true"></canvas>
+    <div class="wrap">
+      <span class="label" style="color:color-mix(in srgb,var(--paper) 60%,transparent)">Saison d'hiver</span>
+      <h2 id="final-title" data-split="scroll">Prêt pour la <em>première bordée</em>&nbsp;?</h2>
+      <p>Décrivez votre propriété ou votre site. L'équipe vous revient rapidement.</p>
+      <a class="btn" href="soumission.html" data-veil="Soumission" data-magnetic><span class="dot"></span>Obtenir ma soumission</a>
+      <div class="phone-line">Ou appelez le 438 826-2471</div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__grid">
+      <div><b class="big">Groupe Cléroux</b><p style="margin-top:14px">Déneigement, transport et matériaux en vrac, aménagement paysager. Entreprise familiale à Laval depuis plus de 40 ans.</p></div>
+      <div><h4>Nous joindre</h4><ul>
+        <li><button class="copy" type="button" data-copy="438 826-2471" data-cursor="Copier"><span>438 826-2471</span><small>Copier</small></button></li>
+        <li><button class="copy" type="button" data-copy="reception@groupecleroux.com" data-cursor="Copier"><span>reception@groupecleroux.com</span><small>Copier</small></button></li>
+        <li>1570, rue Principale<br>Laval (Québec) H7X 4A8</li>
+        <li>Bureau : 8 h à 17 h</li></ul></div>
+      <div><h4>Services</h4><ul>
+        <li><a href="deneigement.html" data-veil="Déneigement">Déneigement</a></li>
+        <li><a href="vrac.html" data-veil="Transport en vrac">Transport en vrac</a></li>
+        <li><a href="vrac.html#materiaux" data-veil="Matériaux en vrac">Matériaux en vrac</a></li>
+        <li><a href="paysager.html" data-veil="Paysager">Aménagement paysager</a></li></ul></div>
+      <div><h4>Entreprise</h4><ul>
+        <li><a href="carrieres.html" data-veil="Carrières">Carrières</a></li>
+        <li><a href="soumission.html" data-veil="Soumission">Obtenir ma soumission</a></li>
+        <li><a href="https://groupeclerouxdeneigement.com/" target="_blank" rel="noopener">Site actuel</a></li></ul></div>
+    </div>
+    <div class="foot__base"><span>© 2026 Groupe Cléroux · Laval, Montréal et Rive-Nord</span><span>Site conçu par LVO · Sherbrooke</span></div>
+  </div>
+</footer>
+
+<a class="btn float-cta" href="soumission.html" data-veil="Soumission" data-after="#story" data-magnetic=".25"><span class="dot"></span>Obtenir ma soumission</a>
+<div class="veil" aria-hidden="true"><div class="veil__panel"></div><div class="veil__panel veil__panel--b"></div><div class="veil__word">Groupe Cléroux</div></div>
+
+<script src="assets/vendor/gsap.min.js"></script>
+<script src="assets/vendor/ScrollTrigger.min.js"></script>
+<script src="assets/vendor/lenis.min.js"></script>
+<script src="assets/site.js"></script>
+<script type="module" src="assets/home.js"></script>
+<script>setTimeout(function(){var l=document.querySelector(".loader");if(l&&!window.__homeAlive){l.remove();if(window.Site)Site.start();}},9000)</script>
+</body></html>

@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>Soumission · Groupe Cléroux</title>
+<meta name="description" content="Obtenez votre soumission de déneigement, de transport en vrac ou d'aménagement paysager en trois étapes.">
+<script>try{if(sessionStorage.getItem("cl-veil"))document.documentElement.classList.add("veil-in")}catch(e){}document.documentElement.classList.add("js")</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400;1,6..96,500&family=Hanken+Grotesk:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/pages.css">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}[hidden]{display:none!important}</style>
+</head>
+<body>
+<header class="site-head">
+  <a class="brand" href="index.html" data-veil="Accueil" aria-label="Groupe Cléroux, accueil"><b>Groupe Cléroux</b><small>Déneigement · Vrac · Paysager</small></a>
+  <nav class="nav" aria-label="Navigation principale">
+    <a href="deneigement.html" data-veil="Déneigement">Déneigement</a>
+    <a href="vrac.html" data-veil="Vrac">Vrac</a>
+    <a href="paysager.html" data-veil="Paysager">Paysager</a>
+    <a href="carrieres.html" data-veil="Carrières">Carrières</a>
+  </nav>
+  <div class="head-tools">
+    <button class="btn-sound" type="button" data-sound aria-pressed="false" aria-label="Activer le son d'ambiance" title="Son d'ambiance"><svg viewBox="0 0 18 18" aria-hidden="true"><g class="bars" fill="currentColor"><rect x="2" y="4" width="2.4" height="11" rx="1.2"/><rect x="7.8" y="2" width="2.4" height="13" rx="1.2"/><rect x="13.6" y="6" width="2.4" height="9" rx="1.2"/></g></svg></button>
+    
+    <button class="menu-btn" type="button" data-menu-open aria-expanded="false" aria-label="Ouvrir le menu"><span></span></button>
+  </div>
+</header>
+<nav class="mobile-nav" aria-label="Menu">
+  <button class="mobile-nav__close" type="button" data-menu-close aria-label="Fermer le menu">×</button>
+  <a href="index.html" data-veil="Accueil">Accueil</a>
+  <a href="deneigement.html" data-veil="Déneigement">Déneigement</a>
+  <a href="vrac.html" data-veil="Vrac">Transport et vrac</a>
+  <a href="paysager.html" data-veil="Paysager">Paysager</a>
+  <a href="carrieres.html" data-veil="Carrières">Carrières</a>
+  <a href="soumission.html" data-veil="Soumission">Soumission</a>
+  <span class="label">438 826-2471 · reception@groupecleroux.com</span>
+</nav>
+<main>
+
+  <section class="page-hero wrap" style="padding-bottom:clamp(30px,4vw,50px)">
+    <span class="label">Soumission gratuite</span>
+    <h1 data-split="load">Obtenir ma <em>soumission.</em></h1>
+    <p class="lead" data-fade=".3">Trois étapes, environ deux minutes. L'équipe vous revient rapidement.</p>
+  </section>
+  <section class="wrap quote">
+    <div>
+      <ol class="progress" aria-label="Étapes du formulaire">
+        <li class="is-current" data-prog="1">1 · Service</li><li data-prog="2">2 · Propriété</li><li data-prog="3">3 · Coordonnées</li>
+      </ol>
+      <form id="quote" novalidate>
+        <fieldset class="fstep" data-step="1">
+          <legend>De quoi avez-vous besoin ?</legend>
+          <div class="choices" role="radiogroup">
+            <div class="choice"><input type="radio" name="service" id="s-res" value="deneigement-residentiel"><label for="s-res"><b>Déneigement résidentiel</b><span>Entrée de maison, copropriété, multilogement</span></label></div>
+            <div class="choice"><input type="radio" name="service" id="s-com" value="deneigement-commercial"><label for="s-com"><b>Déneigement commercial</b><span>Stationnement, commerce, site industriel ou institutionnel</span></label></div>
+            <div class="choice"><input type="radio" name="service" id="s-vrac" value="vrac"><label for="s-vrac"><b>Transport ou matériaux en vrac</b><span>Terre, pierre, sable, paillis, livraison</span></label></div>
+            <div class="choice"><input type="radio" name="service" id="s-pay" value="paysager"><label for="s-pay"><b>Entretien ou aménagement paysager</b><span>Tonte, haies, plates-bandes, pavé uni</span></label></div>
+            <div class="choice"><input type="radio" name="service" id="s-aut" value="autre"><label for="s-aut"><b>Autre demande</b><span>Une question ou un besoin particulier</span></label></div>
+          </div>
+          <p class="err" id="err-service" role="alert" style="color:#A23B2A;font-size:.85rem;margin-top:12px"></p>
+        </fieldset>
+
+        <fieldset class="fstep" data-step="2" hidden>
+          <legend>Parlez-nous de la propriété.</legend>
+          <div class="fields">
+            <div class="field"><label for="f-secteur">Secteur</label><select id="f-secteur" name="secteur"><option value="Laval">Laval</option><option value="Montréal">Montréal</option><option value="Rive-Nord">Rive-Nord</option><option value="Autre secteur avoisinant">Autre secteur avoisinant</option></select></div>
+            <div class="field"><label for="f-adresse">Adresse de la propriété ou du chantier</label><input id="f-adresse" name="adresse" autocomplete="street-address" required><span class="err" id="err-adresse"></span></div>
+
+            <div class="field" data-for="deneigement-residentiel"><label for="f-type-res">Type de propriété</label><select id="f-type-res" name="type_residentiel"><option value="Maison unifamiliale">Maison unifamiliale</option><option value="Jumelé">Jumelé</option><option value="Duplex ou triplex">Duplex ou triplex</option><option value="Copropriété ou multilogement">Copropriété ou multilogement</option></select></div>
+            <div class="field" data-for="deneigement-residentiel"><label for="f-entree">Entrée</label><select id="f-entree" name="entree"><option value="Une voiture">Une voiture</option><option value="Deux voitures">Deux voitures</option><option value="Trois voitures ou plus">Trois voitures ou plus</option><option value="Je ne sais pas">Je ne sais pas</option></select></div>
+
+            <div class="field" data-for="deneigement-commercial"><label for="f-type-com">Type de site</label><select id="f-type-com" name="type_site"><option value="Commerce">Commerce</option><option value="Centre commercial">Centre commercial</option><option value="Usine ou site industriel">Usine ou site industriel</option><option value="École ou institution">École ou institution</option><option value="Station-service">Station-service</option><option value="Garderie">Garderie</option><option value="Copropriété ou multilogement">Copropriété ou multilogement</option><option value="Autre">Autre</option></select></div>
+            <div class="field" data-for="deneigement-commercial"><label for="f-surface">Superficie approximative <small>(facultatif)</small></label><input id="f-surface" name="superficie" placeholder="Ex. : 40 cases de stationnement"></div>
+            <div class="field field--full" data-for="deneigement-commercial"><span class="flabel" id="l-dserv">Services souhaités</span><div class="checks" role="group" aria-labelledby="l-dserv"><input type="checkbox" id="dserv-0" name="dserv" value="Stationnement"><label for="dserv-0">Stationnement</label><input type="checkbox" id="dserv-1" name="dserv" value="Trottoirs et accès"><label for="dserv-1">Trottoirs et accès</label><input type="checkbox" id="dserv-2" name="dserv" value="Portes, quais et escaliers"><label for="dserv-2">Portes, quais et escaliers</label><input type="checkbox" id="dserv-3" name="dserv" value="Abrasifs et fondants"><label for="dserv-3">Abrasifs et fondants</label><input type="checkbox" id="dserv-4" name="dserv" value="Soufflage"><label for="dserv-4">Soufflage</label><input type="checkbox" id="dserv-5" name="dserv" value="Chargement et transport de la neige"><label for="dserv-5">Chargement et transport de la neige</label></div></div>
+
+            <div class="field" data-for="vrac"><label for="f-mat">Matériau</label><select id="f-mat" name="materiau"><optgroup label="Terres"><option value="Top soil (plusieurs grades)">Top soil (plusieurs grades)</option><option value="Terre mixte">Terre mixte</option><option value="Terre de finition">Terre de finition</option><option value="Terre à jardin">Terre à jardin</option><option value="Compost">Compost</option><option value="Terre à semence">Terre à semence</option></optgroup><optgroup label="Couvre-sols"><option value="Paillis naturels">Paillis naturels</option><option value="Paillis BRF">Paillis BRF</option><option value="Paillis noir">Paillis noir</option><option value="Paillis brun">Paillis brun</option><option value="Paillis fibre de jeux">Paillis fibre de jeux</option></optgroup><optgroup label="Pierre concassée"><option value="0-3/4 tout venant">0-3/4 tout venant</option><option value="Poussière de roche">Poussière de roche</option><option value="3/4 net">3/4 net</option><option value="1/2 net">1/2 net</option><option value="1/8 net">1/8 net</option></optgroup><optgroup label="Pierre recyclée"><option value="0-3/4 recyclé">0-3/4 recyclé</option><option value="Asphalte recyclé">Asphalte recyclé</option><option value="Béton recyclé">Béton recyclé</option></optgroup><optgroup label="Pierre décorative"><option value="Pierre de rivière (plusieurs grosseurs)">Pierre de rivière (plusieurs grosseurs)</option><option value="Pierre blanche">Pierre blanche</option><option value="Pierre d'ardoise noire">Pierre d'ardoise noire</option></optgroup><option value="Transport seulement">Transport seulement</option></select></div>
+            <div class="field" data-for="vrac"><label for="f-qte">Quantité approximative <small>(facultatif)</small></label><input id="f-qte" name="quantite" placeholder="Ex. : 15 tonnes"></div>
+            <div class="field" data-for="vrac"><label for="f-date">Date de livraison souhaitée <small>(facultatif)</small></label><input type="date" id="f-date" name="date"></div>
+
+            <div class="field" data-for="paysager"><label for="f-ptype">Type de demande</label><select id="f-ptype" name="type_paysager"><option value="Entretien saisonnier">Entretien saisonnier</option><option value="Projet d'aménagement">Projet d'aménagement</option></select></div>
+            <div class="field field--full" data-for="paysager"><span class="flabel" id="l-pserv">Services souhaités</span><div class="checks" role="group" aria-labelledby="l-pserv"><input type="checkbox" id="pserv-0" name="pserv" value="Tonte"><label for="pserv-0">Tonte</label><input type="checkbox" id="pserv-1" name="pserv" value="Taille de haies"><label for="pserv-1">Taille de haies</label><input type="checkbox" id="pserv-2" name="pserv" value="Plates-bandes"><label for="pserv-2">Plates-bandes</label><input type="checkbox" id="pserv-3" name="pserv" value="Plantation"><label for="pserv-3">Plantation</label><input type="checkbox" id="pserv-4" name="pserv" value="Pose de tourbe"><label for="pserv-4">Pose de tourbe</label><input type="checkbox" id="pserv-5" name="pserv" value="Nivellement"><label for="pserv-5">Nivellement</label><input type="checkbox" id="pserv-6" name="pserv" value="Pavé uni"><label for="pserv-6">Pavé uni</label></div></div>
+          </div>
+        </fieldset>
+
+        <fieldset class="fstep" data-step="3" hidden>
+          <legend>Comment vous joindre ?</legend>
+          <div class="fields">
+            <div class="field"><label for="f-nom">Nom complet</label><input id="f-nom" name="nom" autocomplete="name" required><span class="err" id="err-nom"></span></div>
+            <div class="field"><label for="f-ent">Entreprise <small>(facultatif)</small></label><input id="f-ent" name="entreprise" autocomplete="organization"></div>
+            <div class="field"><label for="f-mail">Courriel</label><input type="email" id="f-mail" name="courriel" autocomplete="email" required><span class="err" id="err-courriel"></span></div>
+            <div class="field"><label for="f-tel">Téléphone</label><input type="tel" id="f-tel" name="telephone" autocomplete="tel" required placeholder="514 000-0000"><span class="err" id="err-telephone"></span></div>
+            <div class="field field--full"><label for="f-msg">Message <small>(facultatif)</small></label><textarea id="f-msg" name="message" placeholder="Pente de l'entrée, accès, horaire, questions…"></textarea></div>
+          </div>
+        </fieldset>
+
+        <div class="fnav">
+          <button type="button" class="back" data-back hidden>← Retour</button>
+          <button type="submit" class="btn" data-next data-magnetic><span class="dot"></span><span data-next-label>Continuer</span></button>
+        </div>
+      </form>
+      <div class="done" id="done" hidden tabindex="-1">
+        <span class="label">Demande prête</span>
+        <h2>Merci, <em data-done-name></em>.</h2>
+        <p class="lead">Voici le résumé de votre demande. L'équipe de Groupe Cléroux vous revient rapidement.</p>
+        <dl data-summary></dl>
+        <p class="note">Démonstration : à la mise en ligne, ce formulaire enverra la demande à reception@groupecleroux.com.</p>
+        <div><a class="btn btn--ghost" href="index.html" data-veil="Accueil">Retour à l'accueil</a></div>
+      </div>
+    </div>
+    <aside class="aside" aria-label="Nous joindre">
+      <h2>Vous préférez parler à quelqu'un ?</h2>
+      <p>Appelez le bureau, l'équipe répond à vos questions et prépare votre soumission avec vous.</p>
+      <ul>
+        <li><span>Téléphone</span><button class="copy" type="button" data-copy="438 826-2471" data-cursor="Copier"><span>438 826-2471</span><small>Copier</small></button></li>
+        <li><span>Courriel</span><button class="copy" type="button" data-copy="reception@groupecleroux.com" data-cursor="Copier"><span>reception@groupecleroux.com</span><small>Copier</small></button></li>
+        <li><span>Bureau</span>1570, rue Principale, Laval (Québec) H7X 4A8</li>
+        <li><span>Heures</span>8 h à 17 h</li>
+        <li><span>Secteurs</span>Laval, Montréal, Rive-Nord et secteurs avoisinants</li>
+      </ul>
+    </aside>
+  </section>
+
+</main>
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__grid">
+      <div><b class="big">Groupe Cléroux</b><p style="margin-top:14px">Déneigement, transport et matériaux en vrac, aménagement paysager. Entreprise familiale à Laval depuis plus de 40 ans.</p></div>
+      <div><h4>Nous joindre</h4><ul>
+        <li><button class="copy" type="button" data-copy="438 826-2471" data-cursor="Copier"><span>438 826-2471</span><small>Copier</small></button></li>
+        <li><button class="copy" type="button" data-copy="reception@groupecleroux.com" data-cursor="Copier"><span>reception@groupecleroux.com</span><small>Copier</small></button></li>
+        <li>1570, rue Principale<br>Laval (Québec) H7X 4A8</li>
+        <li>Bureau : 8 h à 17 h</li></ul></div>
+      <div><h4>Services</h4><ul>
+        <li><a href="deneigement.html" data-veil="Déneigement">Déneigement</a></li>
+        <li><a href="vrac.html" data-veil="Transport en vrac">Transport en vrac</a></li>
+        <li><a href="vrac.html#materiaux" data-veil="Matériaux en vrac">Matériaux en vrac</a></li>
+        <li><a href="paysager.html" data-veil="Paysager">Aménagement paysager</a></li></ul></div>
+      <div><h4>Entreprise</h4><ul>
+        <li><a href="index.html" data-veil="Accueil">Accueil</a></li>
+        <li><a href="carrieres.html" data-veil="Carrières">Carrières</a></li>
+        <li><a href="soumission.html" data-veil="Soumission">Obtenir ma soumission</a></li></ul></div>
+    </div>
+    <div class="foot__base"><span>© 2026 Groupe Cléroux · Laval, Montréal et Rive-Nord</span><span>Site conçu par LVO · Sherbrooke</span></div>
+  </div>
+</footer>
+<div class="veil" aria-hidden="true"><div class="veil__panel"></div><div class="veil__panel veil__panel--b"></div><div class="veil__word">Groupe Cléroux</div></div>
+<script src="assets/vendor/gsap.min.js"></script>
+<script src="assets/vendor/ScrollTrigger.min.js"></script>
+<script src="assets/vendor/lenis.min.js"></script>
+<script src="assets/site.js"></script>
+<script type="module" src="assets/form.js"></script>
+</body>
+</html>
